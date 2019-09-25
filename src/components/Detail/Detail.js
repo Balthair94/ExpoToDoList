@@ -6,8 +6,21 @@ import {
     SafeAreaView,
     Modal
 } from 'react-native'
+import PropTypes from 'prop-types';
 
 export default class Detail extends PureComponent {
+
+    static propTypes = {
+        task: PropTypes.string,
+        onCloseModal: PropTypes.func,
+        onDeleteItem: PropTypes.func
+    }
+
+    static defaultProps = {
+        task: 'Some text',
+        onCloseModal: () => {},
+        onDeleteItem: () => {}
+    }
 
     render() {
         return (
@@ -17,7 +30,7 @@ export default class Detail extends PureComponent {
                 onRequestClose={ this.props.onCloseModal }>
                 <SafeAreaView style={styles.container}>
                     <Text style={styles.text}>
-                        {this.props.task ? this.props.task : 'Some text'}
+                        {this.props.task}
                     </Text>
                     <Button
                         title="Close"

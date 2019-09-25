@@ -5,8 +5,19 @@ import {
     TouchableOpacity, 
     View
 } from 'react-native'
+import PropTypes from 'prop-types';
 
 export default class ListItem extends PureComponent {
+
+    static propTypes = {
+        task: PropTypes.string.isRequired,
+        onItemPressed: PropTypes.func
+    }
+
+    static defaultProps = {
+        onItemPressed: () => {}
+    }
+
     render () {
         return(
             <TouchableOpacity onPress={this.props.onItemPressed}>
