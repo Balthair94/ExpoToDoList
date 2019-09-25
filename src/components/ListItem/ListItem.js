@@ -9,7 +9,7 @@ import {
 export default class ListItem extends PureComponent {
     render () {
         return(
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this.props.onItemPressed}>
                 <View  style={ styles.container }>
                     <Text>{ this.props.task }</Text>
                 </View>

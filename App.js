@@ -10,12 +10,14 @@ import {
   Text
 } from 'react-native';
 import ListItem from './src/components/ListItem/ListItem'
+import Detail from './src/components/Detail/Detail'
 
 export default class App extends Component {
 
   state = {
     currentInput: '',
-    list: []
+    list: [],
+    selected: null
   }
 
   textChangeHandler = value => {
@@ -31,6 +33,25 @@ export default class App extends Component {
         currentInput: ''
       }));
     }
+  }
+
+  closeModal = () => {
+    this.setState({
+      selected: null
+    });
+  }
+
+  itemSelected = value => {
+    this.setState(prev => ({
+      selected: prev.list.find(text => text === value)
+    }));
+  }
+
+  deleteItem = () => {
+    this.setState(prev => ({
+      list: prev.list.filter(item => { return item != prev.selected}),
+      selected: null
+    }));
   }
 
   render() {
@@ -51,7 +72,13 @@ export default class App extends Component {
         </View>
         <FlatList
           data={this.state.list}
-          renderItem={({ item }) => <ListItem task={item}/>}/>
+          renderItem={({ item }) => 
+            <ListItem task={item} onItemPressed={() => this.itemSelected(item)}/>
+          }/>
+        <Detail 
+          task={this.state.selected}
+          onCloseModal={this.closeModal}
+          onDeleteItem={this.deleteItem} />
       </SafeAreaView>
     );
   }
