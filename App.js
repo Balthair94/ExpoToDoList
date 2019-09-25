@@ -6,8 +6,7 @@ import {
   Button, 
   TextInput,
   FlatList,
-  Alert,
-  Text
+  Alert
 } from 'react-native';
 import ListItem from './src/components/ListItem/ListItem'
 import Detail from './src/components/Detail/Detail'
@@ -59,7 +58,6 @@ export default class App extends Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.inputContainer}>
           <Button
-            style={styles.buttonAction}
             title="Add"
             onPress={this.submitTextInput}
           />
@@ -99,9 +97,6 @@ const styles = StyleSheet.create({
     marginStart: 8,
     borderBottomColor: 'green',
     borderBottomWidth: 1,
-    flexGrow: 1,
-  },
-  buttonAction: {
     flexGrow: 1,
   }
 });
