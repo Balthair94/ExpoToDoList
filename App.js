@@ -13,10 +13,13 @@ import Detail from './src/components/Detail/Detail'
 
 export default class App extends Component {
 
-  state = {
-    currentInput: '',
-    list: [],
-    selected: null
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentInput: '',
+      list: [],
+      selected: null
+    }
   }
 
   textChangeHandler = value => {
